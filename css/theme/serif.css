@@ -11,8 +11,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #f0f1eb;
-  background-color: #f0f1eb; }
+  background: #B5C5E6;
+  background-color: #B5C5E6; }
 
 .reveal {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
@@ -36,7 +36,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #383d3d;
+  color: #400040;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
@@ -50,7 +50,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #51483d;
+  color: #45226F;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -59,7 +59,7 @@ body {
   transition: color .15s ease; }
 
 .reveal a:not(.image):hover {
-  color: #8b7c69;
+  color: #7C5494;
   text-shadow: none;
   border: none; }
 
