@@ -1,9 +1,9 @@
-defmodule BarCalc do
+defmodule Barcalc do
   use Application.Behaviour
 
   # See http://elixir-lang.org/docs/stable/Application.Behaviour.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    BarCalc.Supervisor.start_link
+    Barcalc.Supervisor.start_link
   end
 end

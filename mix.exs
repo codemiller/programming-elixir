@@ -1,16 +1,16 @@
-defmodule BarCalc.Mixfile do
+defmodule Barcalc.Mixfile do
   use Mix.Project
 
   def project do
-    [ app: :bar_calc,
+    [ app: :barcalc,
       version: "0.0.1",
-      elixir: "~> 0.11.0",
+      elixir: "~> 0.12.0",
       deps: deps ]
   end
 
   # Configuration for the OTP application
   def application do
-    [mod: { BarCalc, [] }]
+    [mod: { Barcalc, [] }]
   end
 
   # Returns the list of dependencies in the format:

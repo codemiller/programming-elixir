@@ -1,4 +1,4 @@
-defmodule BarCalc.Supervisor do
+defmodule Barcalc.Supervisor do
   use Supervisor.Behaviour
 
   def start_link do
@@ -8,7 +8,7 @@ defmodule BarCalc.Supervisor do
   def init([]) do
     children = [
       # Define workers and child supervisors to be supervised
-      # worker(BarCalc.Worker, [])
+      # worker(Barcalc.Worker, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html
