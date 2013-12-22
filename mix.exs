@@ -5,6 +5,7 @@ defmodule Barcalc.Mixfile do
     [ app: :barcalc,
       version: "0.0.1",
       elixir: "~> 0.12.0",
+      escript_main_module: Barcalc.CLI,
       deps: deps ]
   end
 

@@ -2,7 +2,7 @@ defmodule CliTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  import Barcalc.CLI, only: [ run: 1, parse_args: 1, parse_drinks: 2 ]
+  import Barcalc.CLI, only: [ main: 1, parse_args: 1, parse_drinks: 2 ]
 
   test ":help returned by --help switch" do
     assert parse_args(["--help", "foo"]) == :help
@@ -42,14 +42,14 @@ defmodule CliTest do
 
   test "Result is formatted to one decimal place" do
     result = capture_io fn ->
-      run(["wine", 1])
+      main(["wine", 1])
     end
     assert result == "1.4 standard drinks\n"
   end
 
   test "Help includes drink list" do
     result = capture_io fn ->
-      run(["foo"])
+      main(["foo"])
     end
     assert String.contains?(result, ["beer","margarita","wine"])
   end

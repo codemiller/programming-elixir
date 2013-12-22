@@ -17,7 +17,7 @@ defmodule Barcalc.CLI do
 
   @drink_list [wine: @wine, beer: @beer, margarita: @margarita]
 
-  def run(argv) do
+  def main(argv) do
     argv |> parse_args |> process
   end
 
