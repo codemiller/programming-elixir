@@ -1,4 +1,4 @@
-defmodule Barcalc.Featuredemos.Convert3 do
+defmodule Barcalc.Demos.Convert3 do
   @moduledoc """
   To demonstrate lambdas and higher-order functions.
   Functions to calculate number of standard drinks in a bar order. 
@@ -37,4 +37,4 @@ wine = Drink.new(name: "Glass of House White Wine", content: [{sav_blanc, 150}])
 beer = Drink.new(name: "Schooner of Full-Strength Beer", content: [{beer, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, {triple_sec, 15}, {lime_juice, 15}])
 
-Barcalc.Featuredemos.Convert3.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])
+Barcalc.Demos.Convert3.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])

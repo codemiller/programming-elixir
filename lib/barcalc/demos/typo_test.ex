@@ -1,6 +1,6 @@
-defmodule Barcalc.Featuredemos.TypoTest do
-  require Barcalc.Featuredemos.Typo
-  import Barcalc.Featuredemos.Typo
+defmodule Barcalc.Demos.TypoTest do
+  require Barcalc.Demos.Typo
+  import Barcalc.Demos.Typo
 
   alcohol_grams = 10 
    

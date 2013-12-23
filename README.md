@@ -1,4 +1,4 @@
 programming-elixir
 ==================
 
-Programming Elixir presentation
+Programming Elixir presentation code.

@@ -1,4 +1,4 @@
-defmodule Barcalc.Featuredemos.PConvert do
+defmodule Barcalc.Demos.PConvert do
   @moduledoc """
   Calculates number of standard drinks in a bar order, sequentially or in parallel.
   Every time the standard drinks formula is run there is a 200 millisecond sleep, simulating
@@ -45,6 +45,6 @@ triple_sec = Liquid.new(name: "Triple Sec", alcohol_pc: 40)
 lime_juice = Liquid.new(name: "Lime Juice")
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, {triple_sec, 15}, {lime_juice, 15}])
 
-:timer.tc fn -> Barcalc.Featuredemos.PConvert.standard_drinks Enum.take(Stream.cycle([{margarita, 1}]), 3) end
-:timer.tc fn -> Barcalc.Featuredemos.PConvert.pstandard_drinks Enum.take(Stream.cycle([{margarita, 1}]), 3) end
+:timer.tc fn -> Barcalc.Demos.PConvert.standard_drinks Enum.take(Stream.cycle([{margarita, 1}]), 3) end
+:timer.tc fn -> Barcalc.Demos.PConvert.pstandard_drinks Enum.take(Stream.cycle([{margarita, 1}]), 3) end
 

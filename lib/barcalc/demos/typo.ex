@@ -1,4 +1,4 @@
-defmodule Barcalc.Featuredemos.Typo do
+defmodule Barcalc.Demos.Typo do
   @moduledoc """
   Corrects if keyword typos.
   """

@@ -4,7 +4,7 @@ defmodule Barcalc.HOF do
   """
 
   @doc """
-  Parallel version of map.
+  Parallel version of map. Refactored version of the pmap in Dave Thomas' book Programming Elixir.
 
   Takes a collection and a function and applies that function to every element
   of the collection in parallel. 

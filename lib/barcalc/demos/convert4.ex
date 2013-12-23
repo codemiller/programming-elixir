@@ -1,4 +1,4 @@
-defmodule Barcalc.Featuredemos.Convert4 do
+defmodule Barcalc.Demos.Convert4 do
   @moduledoc """
   To demonstrate use of the streams.
   Functions to calculate number of standard drinks in a bar order. 
@@ -37,5 +37,5 @@ wine = Drink.new(name: "Glass of House White Wine", content: [{sav_blanc, 150}])
 beer = Drink.new(name: "Schooner of Full-Strength Beer", content: [{beer, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, {triple_sec, 15}, {lime_juice, 15}])
 
-Barcalc.Featuredemos.Convert4.standard_drinks(Stream.cycle([{wine, 1}, {beer, 1}, {margarita, 1}])) |> Enum.take(10) |> IO.inspect
+Barcalc.Demos.Convert4.standard_drinks(Stream.cycle([{wine, 1}, {beer, 1}, {margarita, 1}])) |> Enum.take(10) |> IO.inspect
 
