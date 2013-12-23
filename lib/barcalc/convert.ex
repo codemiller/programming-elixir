@@ -8,19 +8,18 @@ defmodule Barcalc.Convert do
   """
 
   def standard_drinks(drinks) do
-    Enum.map(drinks, &calc_standard/1) |> Enum.reduce(0, &(&1 + &2))
+    Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))
   end
   
-  defp calc_standard({Drink[content: ingredients], quantity}) do
-    drink_total = standard_per_ingredient(ingredients) |> sum_ingredients 
-    drink_total * quantity
+  defp calc_for_item({Drink[content: ingredients], quantity}) do
+    sum_drink(ingredients) * quantity
   end  
 
-  defp standard_per_ingredient(ingredients) do
-    Enum.map(ingredients, fn {Liquid[alcohol_pc: pc], ml} -> calc_standard_drinks(ml, pc) end)
+  defp sum_drink(ingredients) do
+    Enum.reduce(ingredients, 0, fn {Liquid[alcohol_pc: pc], ml}, acc -> 
+      calc_standard_drinks(ml, pc) + acc 
+    end)
   end
-
-  defp sum_ingredients(ingredients), do: Enum.reduce(ingredients, 0, &(&1 + &2))
 
   # 0.789 is the specific gravity of ethyl alcohol
   defp calc_standard_drinks(volume_ml, alcohol_pc), do: volume_ml / 1000 * alcohol_pc * 0.789

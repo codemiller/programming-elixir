@@ -6,31 +6,22 @@ defmodule Barcalc.Featuredemos.Convert3 do
 
   @doc """
   Takes a list of tuples of Drink and quantity consumed, eg: [{Drink.new, 2}, {Drink.new, 5}].
+  Returns number of standard drinks in the order.
   """
 
   def standard_drinks(drinks) do
-    compute_standard_drinks(drinks) |> print_standard_drinks
+    Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))
   end
   
-  defp print_standard_drinks(num_drinks) when num_drinks > 0 do
-    IO.puts "That's #{:io_lib.format('~.1f', [num_drinks])} standard drinks."
-  end
-  defp print_standard_drinks(_), do: IO.puts "No alcoholic content."
-
-  defp compute_standard_drinks(drinks) do
-    Enum.map(drinks, &calc_standard/1) |> Enum.reduce(0, &(&1 + &2))
-  end
-  
-  defp calc_standard({Drink[content: ingredients], quantity}) do
-    drink_total = standard_per_ingredient(ingredients) |> sum_ingredients 
-    drink_total * quantity
-  end  
-
-  defp standard_per_ingredient(ingredients) do
-    Enum.map(ingredients, fn {Liquid[alcohol_pc: pc], ml} -> calc_standard_drinks(ml, pc) end)
+  defp calc_for_item({Drink[content: ingredients], quantity}) do
+    sum_drink(ingredients) * quantity
   end
 
-  defp sum_ingredients(ingredients), do: Enum.reduce(ingredients, 0, &(&1 + &2))
+  defp sum_drink(ingredients) do
+    Enum.reduce(ingredients, 0, fn {Liquid[alcohol_pc: pc], ml}, acc ->
+      calc_standard_drinks(ml, pc) + acc
+    end)
+  end
 
   # 0.789 is the specific gravity of ethyl alcohol
   defp calc_standard_drinks(volume_ml, alcohol_pc), do: volume_ml / 1000 * alcohol_pc * 0.789

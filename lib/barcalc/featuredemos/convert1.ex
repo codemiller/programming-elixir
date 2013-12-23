@@ -6,6 +6,7 @@ defmodule Barcalc.Featuredemos.Convert1 do
 
   @doc """
   Takes a tuple with a Beverage and a quantity consumed, eg: {Beverage.new, 1}.
+  Prints out number of standard drinks in the order.
   """
 
   def standard_drinks({Beverage[content: {Liquid[alcohol_pc: pc], ml}], qty}) when pc > 0 do
