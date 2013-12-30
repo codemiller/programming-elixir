@@ -98,8 +98,8 @@
                                     <section>
                                         <h2>Why?</h2>
                                         <ul>
-                                            <li>Boost productivity and extensibility of code on the Erlang VM, while maintaining compatibility with the Erlang ecosystem and harnessing its power to build concurrent, fault-tolerant, distributed programs with hot code loading</li>
-                                            <li class="fragment">"[W]hen Dave [Thomas] gets excited about something then this is a sure sign that something interesting is in the wind. ... Elixir has a non-scary syntax and combines the good features of Ruby and Erlang. It's not Erlang and it's not Ruby and it has ideas of its own. ... Erlang powers things like WhatsApp and crucial parts of half the world's mobile phone networks. It's going to be great fun to see what will happen when the technology becomes less scary and the next wave of enthusiasts joins the party." -&nbsp;<a href="http://joearms.github.io/2013/05/31/a-week-with-elixir.html" target="_blank">Joe Armstrong, Erlang creator</a></li>
+                                            <li>Boost productivity and extensibility of code on the Erlang VM, while maintaining compatibility with the Erlang ecosystem and harnessing its power to build concurrent, fault-tolerant, distributed programs</li>
+                                            <li class="fragment">"Elixir has a non-scary syntax and combines the good features of Ruby and Erlang. ... Erlang powers things like WhatsApp and crucial parts of half the world's mobile phone networks. It's going to be great fun to see what will happen when the technology becomes less scary and the next wave of enthusiasts joins the party." -&nbsp;<a href="http://joearms.github.io/2013/05/31/a-week-with-elixir.html" target="_blank">Joe Armstrong, Erlang creator</a></li>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -126,7 +126,23 @@
                                         </ul>                                        
                                     </section> 
                                     <section>
+                                    <h2>A Taste of Elixir</h2>
                                     <pre><code data-noescape class="elixir"/>
+defmodule Hello do
+  def greet(name // "World") do
+    {:ok, "Hello " <> name <> ". Your rating is: #{rate_name name}"}
+  end
+
+  def rate_name(name), do: size(name) * :math.pi
+
+  def print({_, str}), do: IO.puts str
+end
+
+Hello.greet |> IO.inspect
+# {:ok, "Hello World. Your rating is: 15.707963267948966"}
+
+Hello.greet("codemiller") |> Hello.print
+# Hello codemiller. Your rating is: 31.41592653589793
                                     </code></pre>
                                     </section>
 				</section>
@@ -327,7 +343,7 @@
                                     </section> 
                                     <section>
                                         <h2>Image Credits</h2>
-                                        <ul>
+                                        <ul style="font-size: 80%; line-height: 1em;">
                                             <li><a href="http://www.flickr.com/photos/ladymaggic/4198376788" target="_blank">Calf Brand [cropped] (Ladymaggic, </a><a href="http://creativecommons.org/licenses/by-nc-sa/2.0/legalcode" target="_blank">CC BY-NC-SA 2.0)</a></li>
                                             <li><a href="http://www.flickr.com/photos/lyza/383813359" target="_blank">Dog With Still (Lyza/lyzadanger, </a><a href="http://creativecommons.org/licenses/by-nc-sa/2.0/legalcode" target="_blank">CC BY-NC-SA 2.0)</a></li>
                                             <li><a href="http://www.flickr.com/photos/jamidwyer/2232858283" target="_blank">Kitten Drinking (Jami Dwyer, </a><a href="http://creativecommons.org/licenses/by-sa/2.0/legalcode" target="_blank">CC BY-SA 2.0)</a></li>
@@ -342,8 +358,8 @@
 				</section>
                                 <section>
 				    <h1>Programming Elixir</h1>
-                                    <img src="images/elixir-title.png" width="400px"/>
-			            <h2><a href="http://elixir.codemiller.com">http://elixir.codemiller.com</a></h2>
+                                    <img src="images/elixir-title.png" width="350px"/>
+			            <h3><a href="http://elixir.codemiller.com">http://elixir.codemiller.com</a></h3>
 				    <p>
                                         Katie Miller (<a href="http://twitter.com/codemiller" target="_blank">@codemiller</a>)</br>
                                             <a href="http://openshift.com" target="_blank">OpenShift</a> Developer Advocate at <a href="http://redhat.com" target="_blank">Red Hat</a>
