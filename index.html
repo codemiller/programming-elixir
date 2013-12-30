@@ -29,6 +29,26 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
                 <style>
+                        .reveal .slides section .fragment.highlight-bg-green-temp,
+                        .reveal .slides section .fragment.highlight-bg-red,
+                        .reveal .slides section .fragment.highlight-bg-green,
+                        .reveal .slides section .fragment.highlight-bg-blue,
+                        .reveal .slides section .fragment.highlight-bg-purple {
+                            opacity: 1;
+                        }
+                        .reveal .slides section .fragment.highlight-bg-red.visible {
+                            background-color: #CC0000 !important;
+                        }
+                        .reveal .slides section .fragment.highlight-bg-green.visible,
+                        .fragment.highlight-bg-green-temp.current-fragment {
+                            background-color: #086206 !important;
+                        }
+                        .reveal .slides section .fragment.highlight-bg-blue.visible {
+                            background-color: #3333FF !important;
+                        }
+                        .reveal .slides section .fragment.highlight-bg-purple.visible {
+                            background-color: #8A2BE2 !important;
+                        }                    
                 </style>
 	</head>
 
@@ -128,21 +148,21 @@
                                     <section>
                                     <h2>A Taste of Elixir</h2>
                                     <pre><code data-noescape class="elixir"/>
-defmodule Hello do
-  def greet(name // "World") do
+<span class="fragment highlight-bg-green-temp" data-fragment-index="1">defmodule Hello do</span>
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="2">def greet(name // "World") do
     {:ok, "Hello " <> name <> ". Your rating is: #{rate_name name}"}
-  end
+  end</span>
 
-  def rate_name(name), do: size(name) * :math.pi
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="3">def rate_name(name), do: size(name) * :math.pi</span>
 
-  def print({_, str}), do: IO.puts str
-end
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="4">def print({_, str}), do: IO.puts str</span>
+<span class="fragment highlight-bg-green-temp" data-fragment-index="1">end</span>
 
-Hello.greet |> IO.inspect
-# {:ok, "Hello World. Your rating is: 15.707963267948966"}
+<span class="fragment highlight-bg-green-temp" data-fragment-index="5">Hello.greet |> IO.inspect
+# {:ok, "Hello World. Your rating is: 15.707963267948966"}</span>
 
-Hello.greet("codemiller") |> Hello.print
-# Hello codemiller. Your rating is: 31.41592653589793
+<span class="fragment highlight-bg-green-temp" data-fragment-index="6">Hello.greet("codemiller") |> Hello.print
+# Hello codemiller. Your rating is: 31.41592653589793</span>
                                     </code></pre>
                                     </section>
 				</section>
