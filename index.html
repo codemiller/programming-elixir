@@ -54,8 +54,8 @@
                                     <section>
                                         <h2>Scope</h2>
                                         <ul>
-                                            <li><strong>In:</strong> A brief look at Elixir and examples of some of its key design elements: functional programming techniques, concurrency handling and metaprogramming</li>
-                                            <li><strong>Out:</strong> A comprehensive introduction to Elixir and its syntax, Erlang, OTP or functional programming</li>
+                                            <li><strong>In:</strong> A brief look at Elixir and examples of some of its key design elements: support for functional programming techniques, concurrency and metaprogramming</li>
+                                            <li><strong>Out:</strong> A comprehensive description of Elixir and its syntax, Erlang, OTP or functional programming</li>
                                         </ul>                                         
                                     </section> 
 				</section>
@@ -65,22 +65,70 @@
                                         <img src="images/dog-still.jpg" width="700px"/>
                                     </section>
                                     <section>
-                                        <h2>The Basics</h2>
+                                        <h2>What?</h2>
                                         <ul>
+                                            <li>Dynamically typed, general purpose programming language targeting the Erlang Virtual Machine (BEAM)</li>
+                                            <li>Elixir programs compile to Erlang VM bytecode; there is no performance hit for calling Erlang from Elixir or vice versa</li>
+                                            <li>Influenced by Erlang (VM), Ruby (syntax) and Clojure (macros and protocols)</li>
+                                            <li>Supports functional programming style</li>
+                                        </ul>                                        
+                                    </section> 
+                                    <section>
+                                        <h2>Where?</h2>
+                                        <ul>
+                                            <li>Code on GitHub at <a href="https://github.com/elixir-lang/elixir" target="_blank">http://github.com/elixir-lang/elixir</a></li>
+                                            <li>Open source under Apache 2.0 Licence</li>
+                                        </ul>                                        
+                                    </section>
+                                    <section>
+                                        <h2>Who?</h2>
+                                        <ul>
+                                            <li>Elixir was created by <a href="https://twitter.com/josevalim" target="_blank">José Valim</a>, a Rails Core Team Member</li>
+                                            <li>There are 124 contributors on GitHub with 6000 commits</li>
+                                        </ul>                                        
+                                    </section> 
+                                    <section>
+                                        <h2>When?</h2>
+                                        <ul>
+                                            <li>Work on the language started in January 2011</li>
+                                            <li>First version with equivalent functionality to Erlang, 0.6.0, was released in August 2012</li>
+                                            <li>Current version, 0.12.0, was released in December 2013</li>
+                                        </ul>                                        
+                                    </section> 
+                                    <section>
+                                        <h2>Why?</h2>
+                                        <ul>
+                                            <li>Boost productivity and extensibility of code on the Erlang VM, while maintaining compatibility with the Erlang ecosystem and harnessing its power to build concurrent, fault-tolerant, distributed programs with hot code loading</li>
+                                            <li class="fragment">"[W]hen Dave [Thomas] gets excited about something then this is a sure sign that something interesting is in the wind. ... Elixir has a non-scary syntax and combines the good features of Ruby and Erlang. It's not Erlang and it's not Ruby and it has ideas of its own. ... Erlang powers things like WhatsApp and crucial parts of half the world's mobile phone networks. It's going to be great fun to see what will happen when the technology becomes less scary and the next wave of enthusiasts joins the party." -&nbsp;<a href="http://joearms.github.io/2013/05/31/a-week-with-elixir.html" target="_blank">Joe Armstrong, Erlang creator</a></li>
+                                        </ul>                                        
+                                    </section> 
+                                    <section>
+                                        <h2>How?</h2>
+                                        <ul>
+                                            <li>Everything is an expression</li>
+                                            <li>Shared-nothing concurrent programming via message passing (Actor&nbsp;Model)</li>
+                                            <li>Metaprogramming via macros</li>
+                                            <li>Polymorphism via protocols</li>
+                                            <li>First-class documentation</li>
+                                            <li>Pattern matching</li>
+                                            <li>First-class functions, regular expression literals, UTF-8 strings, records, atoms, tuples, ranges, string sigils</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
                                         <h2>Ecosystem</h2>
                                         <ul>
+                                            <li>Mix build tool</li>
+                                            <li>ExUnit unit test framework</li>
+                                            <li>ExDoc documentation tool</li>
+                                            <li><a href="https://github.com/dynamo/dynamo" target="_blank">Dynamo</a> web framework</li>
+                                            <li><a href="http://expm.co" target="_blank">EXPM</a> library repository (about 110 libraries)</li>
+                                            <li>Erlang libraries</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
-                                        <h2>Syntax and Style</h2>
-                                        <ul>
-                                            <li></li>
-                                            <li class="fragment"></li>
-                                        </ul>                                        
-                                    </section> 
+                                    <pre><code data-noescape class="elixir"/>
+                                    </code></pre>
+                                    </section>
 				</section>
                                 <section>
                                         <h2>Ingredients of an Elixir</h2>
@@ -269,6 +317,7 @@
                                             <li><a href="http://elixir-lang.org" target="_blank">Elixir Site</a></li>
                                             <li><a href="http://elixir-lang.org/docs/stable" target="_blank">Elixir Docs</a></li>
                                             <li><a href="http://expm.co" target="_blank">Elixir Libraries</a></li>
+                                            <li><a href="https://peepcode.com/products/elixir" target="_blank">Meet Elixir by José Valim</a></li>
                                             <li><a href="http://joearms.github.io/2013/05/31/a-week-with-elixir.html" target="_blank">Erlang inventor Joe Armstrong's blog post on Elixir</a></li>
                                             <li><a href="http://pragprog.com/book/elixir/programming-elixir‎" target="_blank">Programming Elixir by Dave Thomas</a></li>
                                             <li><a href="http://shop.oreilly.com/product/0636920030584.do" target="_blank">Introducing Elixir by Simon St Laurent and J David Eisenberg</a></li>
