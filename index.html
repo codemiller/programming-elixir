@@ -467,30 +467,26 @@ end
                                         <h2>Origins</h2>
                                         <ul>
                                             <li>Erlang Virtual Machine</li>
-                                            <li>Open Telecom Platform (OTP)</li>
+                                            <li class="fragment">Open Telecom Platform (OTP)</li>
                                         </ul>                                        
                                     </section>
                                     <section>
-                                        <h2></h2>
+                                        <h2>Concurrency in Elixir</h2>
                                         <ul>
                                             <li></li>
-                                            <li></li>
+                                            <li class="fragment"></li>
                                         </ul>                                        
                                     </section>
                                     <section>
-                                        <pre><code data-noescape class="elixir">
-                                        </code></pre>
-                                    </section> 
-                                    <section>
-                                        <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
+                                        <div class="stretch"><iframe src="http://showterm-katie.rhcloud.com/" width="1280" height="960"></iframe></div>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
                                         <ul>
                                             <li>Erlang</li>
                                             <li>Scala and Akka</li>
-                                            <li>Go with goroutines and channels</li>
-                                            <li>Rust with tasks</li>
+                                            <li>Go goroutines and channels</li>
+                                            <li>Rust tasks</li>
                                         </ul>                                        
                                     </section> 
 				</section>
@@ -502,22 +498,24 @@ end
                                     <section>
                                         <h2>Origins</h2>
                                         <ul>
-                                            <li>Lisp-style macros in Clojure</li>
-                                            <li></li>
-                                        </ul>                                        
+                                            <li>Elixir's macros were inspired by Lisp-style macros in Clojure; Lisp macros were introduced in the early 1960s</li>
+                                            <li class="fragment">Macros, or macroinstructions, offer a way to transform program source code</li>
+                                            <li class="fragment">Syntactic macros, such as Lisp-style macros, manipulate abstract syntax trees rather than doing a find-and-replace like textual macros, so they can preserve the structure of the original program</li>
+                                            <li class="fragment">Macros are powerful but should not be overused</li>
+                                        </ul>                                         
                                     </section>
                                     <section>
-                                        <h2></h2>
+                                        <h2>Elixir Macros</h2>
                                         <ul>
-                                            <li></li>
+                                            <li>Elixir is a homoiconic language; code can be represented using its own data structures, and with macros you can manipulate those representations</li>
+                                            <li class="fragment">Macros are defined inside a module with 'defmacro'; parameters passed to macros are not evaluated</li>
+                                            <li class="fragment">The quote function takes a block of code and returns its internal representation</li>
+                                            <li class="fragment">The unquote function is used within quote blocks to inject a code fragment</li>
+                                            <li class="fragment">Macros are hygenic</li>
                                         </ul>                                        
                                     </section>
                                     <section>
-                                        <pre><code data-noescape class="elixir">
-                                        </code></pre>
-                                    </section> 
-                                    <section>
-                                        <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
+                                        <div class="stretch"><iframe src="http://showterm-katie.rhcloud.com/f7b5ceef4f15ba6fb36b2" width="1280" height="960"></iframe></div>
                                     </section> 
                                     <section>
                                         <h2>Some Other Appearances</h2>
