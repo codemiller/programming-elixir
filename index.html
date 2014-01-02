@@ -344,8 +344,8 @@ beer = Drink.new(name: "Schooner of Beer", content: [{beer, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, 
  {triple_sec, 15}, {lime_juice, 15}])
 
-<span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])
-# 5.953005</span>
+<span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
+# 5.953005
                                         </code></pre>
                                     </section>
                                     <section>
@@ -359,9 +359,42 @@ margarita = Drink.new(name: "Margarita", content: [{tequila, 30},
                                     <section>
                                         <h2>#4 Lambdas and Higher-Order Functions</h2> 
                                         <div><img src="images/lambda-birds.jpg" width="750px"/></div>                                  
+                                    </section>
+                                    <section>
+                                        <ul>
+                                            <li>There are two notations for anonymous functions:</li>
+<pre><code class="ruby">total_cost = fn (cost, quantity) -> cost * quantity end 
+total_cost = &(&1 * &2)
+total_cost.(3.95, 4)
+# 15.8
+</code></pre>
+                                            <li>A higher-order function takes a function as an argument or returns one; map, filter and fold/reduce are prominent examples</li>
+                                        </ul>                                        
                                     </section> 
                                     <section>
-                                        <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
+                                        <pre><code data-noescape class="ruby">defmodule Barcalc.Convert do
+  def standard_drinks(drinks) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.map</span>(drinks, &calc_for_item/1) |> <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.reduce</span>(0, &(&1 + &2))
+  end
+  
+  defp calc_for_item({Drink[content: ingredients], quantity}) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="2">quantity * sum_drink(ingredients)</span>
+  end
+
+  defp sum_drink(ingredients) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.reduce</span>(ingredients, 0, <span class="fragment highlight-bg-green-temp" data-fragment-index="3">fn {Liquid[alcohol_pc: pc], ml}, acc ->
+      calc_standard_drinks(ml, pc) + acc
+    end</span>)
+  end
+
+  defp calc_standard_drinks(volume_ml, alcohol_pc) do
+    volume_ml / 1000 * alcohol_pc * 0.789
+  end
+end
+
+<span class="fragment highlight-bg-green-temp" data-fragment-index="4">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
+# 5.953005</span>
+                                        </code></pre>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
@@ -382,7 +415,37 @@ margarita = Drink.new(name: "Margarita", content: [{tequila, 30},
                                         <div><img src="images/stream-processing.jpg" width="700px"/></div>                                  
                                     </section> 
                                     <section>
-                                        <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
+                                        <ul>
+                                            <li>Stream functions allow you to enumerate a collection lazily</li>
+                                            <li>Streams are composable</li>
+                                            <li>Streams can be infinite</li>
+                                            <li>Stream module functions include cycle, repeatedly, iterate, unfold and resource</li>
+                                        </ul>                                        
+                                    </section> 
+                                     <section>
+                                        <pre><code data-noescape class="ruby">defmodule Barcalc.Convert do
+  def standard_drinks(drinks) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.map</span>(drinks, &calc_for_item/1) |> <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.scan</span>(0, &(&1 + &2))
+  end
+
+  defp calc_for_item({Drink[content: ingredients], quantity}) do
+    quantity * sum_drink(ingredients)
+  end
+
+  defp sum_drink(ingredients) do
+    Enum.reduce(ingredients, 0, fn {Liquid[alcohol_pc: pc], ml}, acc ->
+      calc_standard_drinks(ml, pc) + acc
+    end)
+  end
+
+  defp calc_standard_drinks(volume_ml, alcohol_pc) do
+    volume_ml / 1000 * alcohol_pc * 0.789
+  end
+end
+
+<span class="fragment highlight-bg-green-temp" data-fragment-index="2">Barcalc.Convert.standard_drinks(Stream.cycle([{wine, 1}, {beer, 1}, 
+ {margarita, 1}])) |> Enum.take(5)</span>
+# [1.361025, 2.970585, 4.343445, 5.70447, 7.31403]</code></pre>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
