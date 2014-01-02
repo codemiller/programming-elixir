@@ -334,18 +334,18 @@ defp do_sum_ingredients(<span class="fragment highlight-bg-green-temp" data-frag
                                     <section>
                                         <pre><code data-noescape class="ruby">
 sav_blanc = Liquid.new(name: "Sauvignon Blanc", alcohol_pc: 11.5)
-beer = Liquid.new(name: "Beer", alcohol_pc: 4.8)
+middy = Liquid.new(name: "Mid-Strength Beer", alcohol_pc: 3.4)
 tequila = Liquid.new(name: "Tequila", alcohol_pc: 38)
 triple_sec = Liquid.new(name: "Triple Sec", alcohol_pc: 40)
 lime_juice = Liquid.new(name: "Lime Juice")
 
 wine = Drink.new(name: "Glass of Wine", content: [{sav_blanc, 150}])
-beer = Drink.new(name: "Schooner of Beer", content: [{beer, 425}])
+beer = Drink.new(name: "Schooner of Beer", content: [{middy, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, 
  {triple_sec, 15}, {lime_juice, 15}])
 
 <span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
-# 5.953005
+# 5.014095
                                         </code></pre>
                                     </section>
                                     <section>
@@ -393,7 +393,7 @@ total_cost.(3.95, 4)
 end
 
 <span class="fragment highlight-bg-green-temp" data-fragment-index="4">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
-# 5.953005</span>
+# 5.014095</span>
                                         </code></pre>
                                     </section>
                                     <section>
@@ -445,7 +445,7 @@ end
 
 <span class="fragment highlight-bg-green-temp" data-fragment-index="2">Barcalc.Convert.standard_drinks(Stream.cycle([{wine, 1}, {beer, 1}, 
  {margarita, 1}])) |> Enum.take(5)</span>
-# [1.361025, 2.970585, 4.343445, 5.70447, 7.31403]</code></pre>
+# [1.361025, 2.50113, 3.87399, 5.235015, 6.37512]</code></pre>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
