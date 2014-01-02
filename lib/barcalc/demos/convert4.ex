@@ -27,13 +27,13 @@ defmodule Barcalc.Demos.Convert4 do
 end
 
 sav_blanc = Liquid.new(name: "Sauvignon Blanc", alcohol_pc: 11.5)
-beer = Liquid.new(name: "Beer", alcohol_pc: 4.8)
+middy = Liquid.new(name: "Mid-Strength Beer", alcohol_pc: 3.4)
 tequila = Liquid.new(name: "Tequila", alcohol_pc: 38)
 triple_sec = Liquid.new(name: "Triple Sec", alcohol_pc: 40)
 lime_juice = Liquid.new(name: "Lime Juice")
 
 wine = Drink.new(name: "Glass of House White Wine", content: [{sav_blanc, 150}])
-beer = Drink.new(name: "Schooner of Full-Strength Beer", content: [{beer, 425}])
+beer = Drink.new(name: "Schooner of Mid-Strength Beer", content: [{middy, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, {triple_sec, 15}, {lime_juice, 15}])
 
 Barcalc.Demos.Convert4.standard_drinks(Stream.cycle([{wine, 1}, {beer, 1}, {margarita, 1}])) |> Enum.take(10)

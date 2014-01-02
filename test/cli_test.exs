@@ -37,7 +37,7 @@ defmodule CliTest do
   end
 
   test "Multiple drinks and quantities return result" do
-    assert (parse_drinks(["wine", 1, "beer", 2], [])) == 4.580145  
+    assert (parse_drinks(["wine", 1, "beer", 2], [])) == 3.641235  
   end 
 
   test "Result is formatted to one decimal place" do

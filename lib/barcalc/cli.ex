@@ -6,13 +6,13 @@ defmodule Barcalc.CLI do
   """
 
   @sav_blanc Liquid.new(name: "Sauvignon Blanc", alcohol_pc: 11.5)
-  @full_beer Liquid.new(name: "Beer", alcohol_pc: 4.8)
+  @middy Liquid.new(name: "Mid-Strength Beer", alcohol_pc: 3.4)
   @tequila Liquid.new(name: "Tequila", alcohol_pc: 38)
   @triple_sec Liquid.new(name: "Triple Sec", alcohol_pc: 40)
   @lime_juice Liquid.new(name: "Lime Juice")
 
   @wine Drink.new(name: "Glass of White Wine", content: [{@sav_blanc, 150}])
-  @beer Drink.new(name: "Schooner of Full-Strength Beer", content: [{@full_beer, 425}])
+  @beer Drink.new(name: "Schooner of Mid-Strength Beer", content: [{@middy, 425}])
   @margarita Drink.new(name: "Margarita", content: [{@tequila, 30}, {@triple_sec, 15}, {@lime_juice, 15}])
 
   @drink_list [wine: @wine, beer: @beer, margarita: @margarita]
