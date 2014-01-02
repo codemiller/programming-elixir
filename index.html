@@ -29,6 +29,7 @@
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
                 <style>
+			.initial-front { z-index: 2; position: absolute; left: 420px; }
                         .reveal .slides section .fragment.highlight-bg-green-temp,
                         .reveal .slides section .fragment.highlight-bg-red,
                         .reveal .slides section .fragment.highlight-bg-green,
@@ -74,7 +75,7 @@
                                     <section>
                                         <h2>Scope</h2>
                                         <ul>
-                                            <li><strong>In:</strong> A brief look at Elixir and examples of some of its key design elements: support for functional programming techniques, concurrency and metaprogramming</li>
+                                            <li><strong>In:</strong> A brief look at Elixir and examples of some of its key elements: support for functional programming techniques, concurrency and metaprogramming</li>
                                             <li><strong>Out:</strong> A comprehensive description of Elixir and its syntax, Erlang, OTP or functional programming</li>
                                         </ul>                                         
                                     </section> 
@@ -89,8 +90,8 @@
                                         <ul>
                                             <li>Dynamically typed, general purpose programming language targeting the Erlang Virtual Machine (BEAM)</li>
                                             <li>Elixir programs compile to Erlang VM bytecode; there is no performance hit for calling Erlang from Elixir or vice versa</li>
-                                            <li>Influenced by Erlang (VM), Ruby (syntax) and Clojure (protocols and macros)</li>
-                                            <li>Supports functional programming style</li>
+                                            <li>Influenced by Erlang (VM, coding style), Ruby (syntax) and Clojure (protocols and macros)</li>
+                                            <li>Supports functional programming techniques</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -104,15 +105,15 @@
                                         <h2>Who?</h2>
                                         <ul>
                                             <li>Elixir was created by <a href="https://twitter.com/josevalim" target="_blank">José Valim</a>, a Rails Core Team Member</li>
-                                            <li>There are 124 contributors on GitHub with 6000 commits</li>
+                                            <li>There are about 130 contributors on GitHub with ~6100 commits; the project has been forked 270 times</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
                                         <h2>When?</h2>
                                         <ul>
                                             <li>Work on the language started in January 2011</li>
-                                            <li>First version with equivalent functionality to Erlang, 0.6.0, was released in August 2012</li>
-                                            <li>Current version, 0.12.0, was released in December 2013</li>
+                                            <li>The first version with equivalent functionality to Erlang, 0.6.0, was released in August 2012</li>
+                                            <li>The current version, 0.12.0, was released in December 2013</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -220,14 +221,15 @@ house = Drink.new name: "House White Wine", content: {sav, 150}</span>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>Strings in Java and JavaScript</li>
                                             <li>Strings and tuples in Python</li>
                                             <li>Frozen objects in Ruby</li>
                                             <li>Read-only attributes in Perl</li>
                                             <li>Val declarations in Scala</li>
                                             <li>Collections in Clojure</li>
-                                            <li>Data structures in Haskell</li>
+                                            <li>All data structures in Haskell</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -272,7 +274,8 @@ end</span>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>Erlang</li>
                                             <li>Haskell</li>
                                             <li>OCaml</li>
@@ -287,13 +290,30 @@ end</span>
                                         <div><img src="images/list-processing.jpg" width="550px"/></div>                                  
                                     </section> 
                                     <section>
+                                        <ul>
+                                            <li>Lists are processed recursively; there are no loops</li>
+                                            <li>The vertical bar is a list constructor (cons):</li>
+<pre><code class="ruby">list = ["wine" | ["beer", "spirits"]]
+# ["wine", "beer", "spirits"]
+double_head_list = ["wine", "beer" | ["spirits"]]
+# ["wine", "beer", "spirits"]
+</code></pre>
+                                            <li>Lists can be pattern matched using this structure</li>
+                                            <li>Elixir also has list comprehensions:</li>
+<pre><code class="ruby">lc x inlist [1, 2], y inlist [10, 20], x*y < 30, do: x*y
+# [10, 20, 20]
+</code></pre>
+                                        </ul>                                        
+                                    </section>
+                                    <section>
                                         <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
-                                            <li>Cons lists: Common Lisp, Clojure, Haskell, F#, OCaml, Erlang</li>
-                                            <li>List comprehensions: Scala, Common List, Python, Haskell, CoffeeScript, Perl, Groovy, OCaml, Erlang, Clojure, Ceylon</li>
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
+                                            <li>Cons cell lists: Common Lisp, Clojure, Haskell, F#, OCaml, Erlang</li>
+                                            <li>List comprehensions: Python, CoffeeScript, Perl, Groovy, Scala, Haskell, OCaml, Erlang, Clojure, Ceylon, Common Lisp</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -305,7 +325,8 @@ end</span>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>JavaScript</li>
                                             <li>PHP</li>
                                             <li>Clojure</li>
@@ -325,7 +346,8 @@ end</span>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>Generators in Python 3</li>
                                             <li>Clojure sequences</li>
                                             <li>Miranda and Haskell (lazy by default)</li>
@@ -361,7 +383,8 @@ end</span>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>Erlang</li>
                                             <li>Scala and Akka</li>
                                             <li>Go with goroutines and channels</li>
@@ -396,7 +419,8 @@ end</span>
                                     </section> 
                                     <section>
                                         <h2>Some Other Appearances</h2>
-                                        <ul class="fragment">
+                                        <div class="fragment fade-out initial-front" data-fragment-index="1"><img src="images/code-question.png" width="200px"/></div>
+                                        <ul class="fragment" data-fragment-index="1">
                                             <li>Common Lisp, Scheme and Racket</li>
                                             <li>Clojure</li>
                                             <li>Scala (experimental)</li>
