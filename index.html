@@ -306,7 +306,47 @@ double_head_list = ["wine", "beer" | ["spirits"]]
                                         </ul>                                        
                                     </section>
                                     <section>
-                                        <div class="stretch"><iframe src="" width="1280" height="960"></iframe></div>
+                                        <pre><code data-noescape class="ruby" style="width: 130%; position: absolute; left: -160px; top: -350px;"># defrecord Drink, name: :nil, content: <span class="fragment highlight-bg-green-temp" data-fragment-index="2">[{Liquid.new, 0}]</span>
+<span class="fragment" data-fragment-index="3">def standard_drinks(drinks) do
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="3">sum_standard_drinks(drinks, 0)</span>
+end
+  
+defp <span class="fragment highlight-bg-green-temp" data-fragment-index="4">sum_standard_drinks([], acc)</span>, do: acc 
+defp <span class="fragment highlight-bg-green-temp" data-fragment-index="5">sum_standard_drinks([ {drink, quantity} | others ], acc)</span> do
+  sum_standard_drinks(others, acc + <span class="fragment highlight-bg-green-temp" data-fragment-index="6">calc_for_item(drink, quantity)</span>)   
+end</span>
+  
+<span class="fragment" data-fragment-index="7">defp calc_for_item(<span class="fragment highlight-bg-green-temp" data-fragment-index="7">Drink[content: ingredients], quantity</span>) do
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="8">quantity * (standard_per_ingredient(ingredients) |> sum_ingredients)</span>
+end</span>
+
+<span class="fragment" data-fragment-index="9">defp standard_per_ingredient(ingredients) do
+  lc {Liquid[alcohol_pc: pc], ml} inlist ingredients, do: <span class="fragment highlight-bg-green-temp" data-fragment-index="9">calc_standard_drinks(ml, pc)</span>
+end
+
+defp calc_standard_drinks(volume_ml, alcohol_pc), do: volume_ml / 1000 * alcohol_pc * 0.789</span>
+
+<span class="fragment" data-fragment-index="10">defp sum_ingredients(ingredients), do: <span class="fragment highlight-bg-green-temp" data-fragment-index="10">do_sum_ingredients(ingredients, 0)</span>
+defp do_sum_ingredients(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[], acc</span>), do: acc
+defp do_sum_ingredients(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[ head | tail ], acc</span>), do: head + do_sum_ingredients(tail, acc)</span>
+</code></pre>
+                                    </section>
+                                    <section>
+                                        <pre><code data-noescape class="ruby">
+sav_blanc = Liquid.new(name: "Sauvignon Blanc", alcohol_pc: 11.5)
+beer = Liquid.new(name: "Beer", alcohol_pc: 4.8)
+tequila = Liquid.new(name: "Tequila", alcohol_pc: 38)
+triple_sec = Liquid.new(name: "Triple Sec", alcohol_pc: 40)
+lime_juice = Liquid.new(name: "Lime Juice")
+
+wine = Drink.new(name: "Glass of Wine", content: [{sav_blanc, 150}])
+beer = Drink.new(name: "Schooner of Beer", content: [{beer, 425}])
+margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, 
+ {triple_sec, 15}, {lime_juice, 15}])
+
+<span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])
+# 5.953005</span>
+                                        </code></pre>
                                     </section>
                                     <section>
                                         <h2>Some Other Appearances</h2>
