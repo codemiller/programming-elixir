@@ -8,7 +8,6 @@ defmodule Barcalc.Demos.Convert1 do
   Takes a tuple with a Beverage and a quantity consumed, eg: {Beverage.new, 1}.
   Prints out number of standard drinks in the order.
   """
-
   def standard_drinks({Beverage[content: {Liquid[alcohol_pc: pc], ml}], qty}) when pc > 0 do
     std = ml / 1000 * pc * 0.789 * qty 
     IO.puts "That's #{:io_lib.format('~.1f', [std])} standard drinks."

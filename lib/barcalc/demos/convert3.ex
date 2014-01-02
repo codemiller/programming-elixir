@@ -8,7 +8,6 @@ defmodule Barcalc.Demos.Convert3 do
   Takes a list of tuples of Drink and quantity consumed, eg: [{Drink.new, 2}, {Drink.new, 5}].
   Returns number of standard drinks in the order.
   """
-
   def standard_drinks(drinks) do
     Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))
   end

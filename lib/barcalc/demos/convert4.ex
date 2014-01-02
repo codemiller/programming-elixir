@@ -8,7 +8,6 @@ defmodule Barcalc.Demos.Convert4 do
   Takes a list of tuples of Drink and quantity consumed, eg: [{Drink.new, 2}, {Drink.new, 5}].
   Returns number of standard drinks in each item.
   """
-
   def standard_drinks(drinks) do
     Stream.map(drinks, &calc_for_item/1) |> Stream.scan(0, &(&1 + &2))
   end
