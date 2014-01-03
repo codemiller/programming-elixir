@@ -466,15 +466,23 @@ end
                                     <section>
                                         <h2>Origins</h2>
                                         <ul>
-                                            <li>Erlang Virtual Machine</li>
-                                            <li class="fragment">Open Telecom Platform (OTP)</li>
+                                            <li>Elixir leverages the Erlang Virtual Machine and Open Telecom Platform (OTP)</li>
+                                            <li class="fragment">"The Erlang flagship project...has achieved a NINE nines reliability (yes, you read that right, 99.9999999%)." -&nbsp;<a href="http://pragprog.com/articles/erlang" target="_blank">Joe Armstrong, Erlang creator</a></li>
+                                            <li class="fragment">OTP offers high reliability, supervised processes, distributed applications, a framework for hot code swapping, and failure management</li>                             
+                                            <li class="fragment">In OTP, systems are hierarchies of applications made up of processes that follow conventions called behaviours; some processes may be supervisors</li>
                                         </ul>                                        
                                     </section>
                                     <section>
                                         <h2>Concurrency in Elixir</h2>
                                         <ul>
-                                            <li></li>
-                                            <li class="fragment"></li>
+                                            <li>Actor-based concurrency model: lightweight, share-nothing processes using inter-process messages to synchronise activities</li>
+                                            <li class="fragment">Processes run across all CPUs with very little overhead</li>
+<pre class="fragment" style="width: 103%;"><code data-noescape class="ruby">iex> receiver = spawn fn -> receive do {pid, msg} -> IO.puts msg end end
+#PID<0.43.0>
+iex> spawn fn -> (receiver <- { self, "Oh, hai!" }) end
+#PID<0.45.0>
+Oh, hai!</code></pre>
+                                            <li class="fragment">Mix adds example OTP config to new projects by default</li>
                                         </ul>                                        
                                     </section>
                                     <section>
