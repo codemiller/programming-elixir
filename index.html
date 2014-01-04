@@ -201,21 +201,21 @@ defrecord Liquid, name: :nil, alcohol_pc: 0
 defrecord Beverage, name: :nil, content: {Liquid.new, 0}
 
 <span class="fragment" data-fragment-index="1">sav = Liquid.new name: "Sauvignon Blanc", alcohol_pc: 11
-house = Drink.new name: "House White Wine", content: {sav, 150}</span>
+house = Beverage.new name: "House White Wine", content: {sav, 150}</span>
 <span class="fragment" data-fragment-index="2">special = house</span>
 
 <span class="fragment" data-fragment-index="3">house.name "House White"</span>
 <span class="fragment" data-fragment-index="4">IO.inspect house
-# Drink[<span class="fragment highlight-bg-green" data-fragment-index="5">name: "House White Wine"</span>,
+# Beverage[<span class="fragment highlight-bg-green" data-fragment-index="5">name: "House White Wine"</span>,
 #   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11], 150}]</span>
 
 <span class="fragment" data-fragment-index="6">house = house.name "House White"</span>
 <span class="fragment" data-fragment-index="7">IO.inspect house
-# Drink[<span class="fragment highlight-bg-green" data-fragment-index="8">name: "House White"</span>, 
+# Beverage[<span class="fragment highlight-bg-green" data-fragment-index="8">name: "House White"</span>, 
 #   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11], 150}]</span>
 
 <span class="fragment" data-fragment-index="9">IO.inspect special</span>
-<span class="fragment" data-fragment-index="10"># Drink[<span class="fragment highlight-bg-green" data-fragment-index="11">name: "House White Wine"</span>, 
+<span class="fragment" data-fragment-index="10"># Beverage[<span class="fragment highlight-bg-green" data-fragment-index="11">name: "House White Wine"</span>, 
 #   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11], 150}]</span>
                                         </code></pre>
                                     </section>
@@ -514,7 +514,7 @@ Oh, hai!</code></pre>
                                     <section>
                                         <h2>Elixir Macros</h2>
                                         <ul>
-                                            <li>Elixir is a homoiconic language; code can be represented using its own data structures, and with macros you can manipulate those representations</li>
+                                            <li>Elixir is a homoiconic language: code can be represented using its own data structures; those representations can be manipulated with macros</li>
                                             <li class="fragment">Macros are defined inside a module with 'defmacro'; parameters passed to macros are not evaluated</li>
                                             <li class="fragment">The quote function takes a block of code and returns its internal representation</li>
                                             <li class="fragment">The unquote function is used within quote blocks to inject a code fragment</li>
@@ -543,11 +543,12 @@ Oh, hai!</code></pre>
                                     <section>
                                         <ul>
                                             <li><strong>Functional programming features</strong> help us write code that is demonstrably correct and composed of small, reusable pieces that are easy to test and maintain</li>
-                                            <li><strong>Support for building concurrent, distributed, fault-tolerant applications</strong> helps us write programs to suit today's multi-core, highly available, distributed computing environments</li>
+                                            <li><strong>Support for building concurrent, distributed, fault-tolerant applications</strong> helps us write programs to suit today's multicore, highly available, distributed computing environments</li>
                                             <li><strong>Metaprogramming with macros</strong> helps us write domain-specific languages, which can help improve productivity and communication</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
+                                        <h2>One Final Ingredient</h2>
                                         <div><img src="images/monkey-mirror.gif" width="800px"/></div>  
                                     </section>                                     
 				</section>
