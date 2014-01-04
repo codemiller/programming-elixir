@@ -89,8 +89,8 @@
                                         <h2>What?</h2>
                                         <ul>
                                             <li>Dynamically typed, general purpose programming language targeting the Erlang Virtual Machine (BEAM)</li>
-                                            <li>Elixir programs compile to Erlang VM bytecode; there is no performance hit for calling Erlang from Elixir or vice versa</li>
-                                            <li>Influenced by Erlang (VM, coding style), Ruby (syntax) and Clojure (protocols and macros)</li>
+                                            <li>Elixir programs compile to Erlang VM bytecode</li>
+                                            <li>Influenced by Erlang, Ruby and Clojure</li>
                                             <li>Supports functional programming techniques</li>
                                         </ul>                                        
                                     </section> 
@@ -104,22 +104,22 @@
                                     <section>
                                         <h2>Who?</h2>
                                         <ul>
-                                            <li>Elixir was created by <a href="https://twitter.com/josevalim" target="_blank">José Valim</a>, a Rails Core Team Member</li>
-                                            <li>There are about 130 contributors on GitHub with ~6100 commits; the project has been forked 270 times</li>
+                                            <li>Elixir was created by <a href="https://twitter.com/josevalim" target="_blank">José Valim</a></li>
+                                            <li>About 130 contributors on GitHub with ~6100 commits</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
                                         <h2>When?</h2>
                                         <ul>
-                                            <li>Work on the language started in January 2011</li>
-                                            <li>The first version with equivalent functionality to Erlang, 0.6.0, was released in August 2012</li>
-                                            <li>The current version, 0.12.0, was released in December 2013</li>
+                                            <li>Work started in January 2011</li>
+                                            <li>First version with equivalent functionality to Erlang released August 2012</li>
+                                            <li>Current version released December 2013</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
                                         <h2>Why?</h2>
                                         <ul>
-                                            <li>Boost productivity and extensibility of code on the Erlang VM, while maintaining compatibility with the Erlang ecosystem and harnessing its power to build concurrent, fault-tolerant, distributed programs</li>
+                                            <li>Boost productivity and extensibility of code on the Erlang VM, while maintaining compatibility with the Erlang ecosystem and harnessing its power</li>
                                             <li class="fragment">"Elixir has a non-scary syntax and combines the good features of Ruby and Erlang. ... Erlang powers things like WhatsApp and crucial parts of half the world's mobile phone networks. It's going to be great fun to see what will happen when the technology becomes less scary and the next wave of enthusiasts joins the party." -&nbsp;<a href="http://joearms.github.io/2013/05/31/a-week-with-elixir.html" target="_blank">Joe Armstrong, Erlang creator</a></li>
                                         </ul>                                        
                                     </section> 
@@ -142,7 +142,7 @@
                                             <li>ExUnit unit test framework</li>
                                             <li>ExDoc documentation tool</li>
                                             <li><a href="https://github.com/dynamo/dynamo" target="_blank">Dynamo</a> web framework</li>
-                                            <li><a href="http://expm.co" target="_blank">EXPM</a> library repository (about 110 libraries)</li>
+                                            <li><a href="http://expm.co" target="_blank">EXPM</a> library repository</li>
                                             <li>Erlang libraries</li>
                                         </ul>                                        
                                     </section> 
@@ -181,7 +181,7 @@
                                         <ul>
                                             <li><strong>Functional programming paradigm</strong>: Computation as the evaluation of mathematical functions</li>
                                             <li>The FP style makes it easier to reason about code</li>
-                                            <li>Functional programming is based on lambda calculus, a formal mathematical system for expressing computation developed in the 1930s</li>
+                                            <li>Functional programming is based on lambda calculus</li>
                                         </ul>                                        
                                     </section>
                                     <section>
@@ -190,8 +190,8 @@
                                     </section> 
                                     <section>
                                         <ul>
-                                            <li>All values are immutable in Elixir: lists, tuples, records, ints, etc</li>
-                                            <li>Unlike Erlang, in Elixir you can rebind a variable</li>
+                                            <li>All values are immutable in Elixir</li>
+                                            <li>Unlike Erlang, in Elixir you can rebind variables</li>
                                             <li>As nothing is mutable, data can be reused when building new structures</li>
                                         </ul>                                        
                                     </section> 
@@ -238,14 +238,14 @@ house = Drink.new name: "House White Wine", content: {sav, 150}</span>
                                     </section> 
                                     <section>
                                         <ul>
-                                            <li>Pattern matching deconstructs structured data; the equals sign is a match operator</li>
+                                            <li>Pattern matching deconstructs structured data</li>
 <pre><code>list = ["wine", "beer", "spirits"]
 [a, b, c] = list
 IO.inspect b
 # "beer"</code></pre>
                                             <li>Pattern matching is recursive</li>
-                                            <div class="fragment"><li>Guard clauses add predicates to function definitions that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
-                                            <li>Only a subset of Elixir expressions are permitted in guards</li></div>
+                                            <div class="fragment"><li>Guard clauses add predicates that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
+                                            <li>Only a subset of expressions are permitted in guards</li></div>
                                         </ul>                                        
                                     </section> 
                                     <section>
@@ -506,9 +506,9 @@ Oh, hai!</code></pre>
                                     <section>
                                         <h2>Origins</h2>
                                         <ul>
-                                            <li>Elixir's macros were inspired by Lisp-style macros in Clojure; Lisp macros were introduced in the early 1960s</li>
+                                            <li>Macros inspired by Lisp-style macros in Clojure; Lisp macros were introduced in the early 1960s</li>
                                             <li class="fragment">Macros, or macroinstructions, offer a way to transform program source code</li>
-                                            <li class="fragment">Syntactic macros, such as Lisp-style macros, manipulate abstract syntax trees rather than doing a find-and-replace like textual macros, so they can preserve the structure of the original program</li>
+                                            <li class="fragment">Syntactic macros, such as Lisp-style macros, manipulate abstract syntax trees</li>
                                             <li class="fragment">Macros are powerful but should not be overused</li>
                                         </ul>                                         
                                     </section>
