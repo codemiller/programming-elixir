@@ -239,16 +239,16 @@ house = Beverage.new name: "House White Wine", content: {sav, 150}</span>
                                     <section>
                                         <ul>
                                             <li>Pattern matching deconstructs structured data</li>
-<pre><code  data-noescape class="ruby" style="width: 101%;">list = ["wine","beer","spirits"]
+<pre><code data-noescape class="ruby" style="width: 101%;">list = ["wine","beer","spirits"]
 [a,b,c] = list
 IO.inspect b # "beer"
 <span class="fragment">[a,b,c] = ["w","b","s"]
 IO.inspect b # "b"</span>
 <span class="fragment">[a,^b,c] = list
 <span style="background-color: #CC0000;">**(MatchError) no match of right hand side value: ["wine","beer","spirits"]</span></span></code></pre>
-                                            <li>Pattern matching is recursive</li>
-                                            <div class="fragment"><li>Guard clauses add predicates that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
-                                            <li>Only a subset of expressions are permitted in guards</li></div>
+                                            <li class="fragment">Pattern matching is recursive</li>
+                                            <li class="fragment">Guard clauses add predicates that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
+                                            <li class="fragment">Only a subset of expressions are permitted in guards</li>
                                         </ul>                                        
                                     </section> 
                                     <section>
