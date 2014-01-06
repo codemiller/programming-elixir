@@ -207,16 +207,16 @@ house = Beverage.new name: "House White Wine", content: {sav, 150}</span>
 <span class="fragment" data-fragment-index="3">house.name "House White"</span>
 <span class="fragment" data-fragment-index="4">IO.inspect house
 # Beverage[<span class="fragment highlight-bg-green" data-fragment-index="5">name: "House White Wine"</span>,
-#   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
+#  content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
 
 <span class="fragment" data-fragment-index="6">house = house.name "House White"</span>
 <span class="fragment" data-fragment-index="7">IO.inspect house
 # Beverage[<span class="fragment highlight-bg-green" data-fragment-index="8">name: "House White"</span>, 
-#   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
+#  content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
 
 <span class="fragment" data-fragment-index="9">IO.inspect special</span>
 <span class="fragment" data-fragment-index="10"># Beverage[<span class="fragment highlight-bg-green" data-fragment-index="11.5">name: "House White Wine"</span>, 
-#   content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
+#  content: {Liquid[name: "Sauvignon Blanc", alcohol_pc: 11.5], 150}]</span>
                                         </code></pre>
                                     </section>
                                     <section>
@@ -239,13 +239,13 @@ house = Beverage.new name: "House White Wine", content: {sav, 150}</span>
                                     <section>
                                         <ul>
                                             <li>Pattern matching deconstructs structured data</li>
-<pre><code data-noescape class="ruby" style="width: 101%;">list = ["wine","beer","spirits"]
+<pre><code data-noescape class="ruby">list = ["b","w","s"]
 [a,b,c] = list
-IO.inspect b # "beer"
-<span class="fragment">[a,b,c] = ["w","b","s"]
-IO.inspect b # "b"</span>
+IO.inspect b # "w"
+<span class="fragment">[a,b,c] = ["beer","wine","spirits"]
+IO.inspect b # "wine"</span>
 <span class="fragment">[a,^b,c] = list
-<span style="background-color: #CC0000;">**(MatchError) no match of right hand side value: ["wine","beer","spirits"]</span></span></code></pre>
+<span style="background-color: #CC0000;">**(MatchError) no match of right hand side value: ["b","w","s"]</span></span></code></pre>
                                             <li class="fragment">Pattern matching is recursive</li>
                                             <li class="fragment">Guard clauses add predicates that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
                                             <li class="fragment">Only a subset of expressions are permitted in guards</li>
@@ -255,21 +255,21 @@ IO.inspect b # "b"</span>
                                         <pre><code data-noescape class="ruby">
 sav_blanc = Liquid.new(name: "Sauvignon Blanc", alcohol_pc: 11.5)
 soda_water = Liquid.new(name: "Soda Water")
-wine = Beverage.new(name: "Glass of Wine", content: {sav_blanc, 150})
-soda = Beverage.new(name: "Glass of Soda", content: {soda_water, 250})
+wine = Beverage.new(name: "Glass Wine", content: {sav_blanc, 150})
+soda = Beverage.new(name: "Glass Soda", content: {soda_water, 250})
 
 <span class="fragment" data-fragment-index="1">defmodule Barcalc.Convert do
-  def standard_drinks(<span class="fragment highlight-bg-green-temp" data-fragment-index="2">{Beverage[<span class="fragment highlight-bg-green-temp" data-fragment-index="3">content: {Liquid[<span class="fragment highlight-bg-green-temp" data-fragment-index="4">alcohol_pc: pc</span>], ml}</span>],</span>
-                       <span class="fragment highlight-bg-green-temp" data-fragment-index="2">qty}</span>) <span class="fragment highlight-bg-green-temp" data-fragment-index="5">when pc > 0</span> do
+  def standard_drinks(<span class="fragment highlight-bg-green-temp" data-fragment-index="2">{Beverage[<span class="fragment highlight-bg-green-temp" data-fragment-index="3">content: {Liquid[<span class="fragment highlight-bg-green-temp" data-fragment-index="4">alcohol_pc: pc</span>],</span></span>
+                         <span class="fragment highlight-bg-green-temp" data-fragment-index="2"><span class="fragment highlight-bg-green-temp" data-fragment-index="3">ml}</span>], qty}</span>) <span class="fragment highlight-bg-green-temp" data-fragment-index="5">when pc > 0</span> do
     std = ml / 1000 * pc * 0.789 * qty 
-    IO.puts "That's #{:io_lib.format('~.1f', [std])} standard drinks."
+    IO.puts "It's #{:io_lib.format('~.1f', [std])} standard drinks."
   end
 
   def standard_drinks(<span class="fragment highlight-bg-green-temp" data-fragment-index="7">{Beverage[], _}</span>), do: IO.puts "No alcohol."
 end</span>
 
 <span class="fragment" data-fragment-index="9">Barcalc.Convert.standard_drinks({wine, 2})
-# That's 2.7 standard drinks.</span>
+# It's 2.7 standard drinks.</span>
 
 <span class="fragment" data-fragment-index="10">Barcalc.Convert.standard_drinks({soda, 5})
 # No alcohol.</span>
@@ -308,29 +308,29 @@ double_head_list = ["wine", "beer" | ["spirits"]]
                                         </ul>                                        
                                     </section>
                                     <section>
-                                        <pre><code data-noescape class="ruby" style="width: 130%; position: absolute; left: -160px; top: -350px;"># defrecord Drink, name: :nil, content: <span class="fragment highlight-bg-green-temp" data-fragment-index="2">[{Liquid.new, 0}]</span>
+                                        <pre><code data-noescape class="ruby"># defrecord Drink, name: :nil, content: <span class="fragment highlight-bg-green-temp" data-fragment-index="2">[{Liquid.new, 0}]</span>
 <span class="fragment" data-fragment-index="3">def standard_drinks(drinks) do
-  <span class="fragment highlight-bg-green-temp" data-fragment-index="3">sum_standard_drinks(drinks, 0)</span>
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="3">sum_std_drinks(drinks, 0)</span>
 end
   
-defp <span class="fragment highlight-bg-green-temp" data-fragment-index="4">sum_standard_drinks([], acc)</span>, do: acc 
-defp <span class="fragment highlight-bg-green-temp" data-fragment-index="5">sum_standard_drinks([ {drink, quantity} | others ], acc)</span> do
-  sum_standard_drinks(others, acc + <span class="fragment highlight-bg-green-temp" data-fragment-index="6">calc_for_item(drink, quantity)</span>)   
+defp <span class="fragment highlight-bg-green-temp" data-fragment-index="4">sum_std_drinks([], acc)</span>, do: acc 
+defp <span class="fragment highlight-bg-green-temp" data-fragment-index="5">sum_std_drinks([ {drink, qty} | others ], acc)</span> do
+  sum_std_drinks(others, acc + <span class="fragment highlight-bg-green-temp" data-fragment-index="6">calc_item(drink, qty)</span>)   
 end</span>
   
-<span class="fragment" data-fragment-index="7">defp calc_for_item(<span class="fragment highlight-bg-green-temp" data-fragment-index="7">Drink[content: ingredients], quantity</span>) do
-  <span class="fragment highlight-bg-green-temp" data-fragment-index="8">quantity * (standard_per_ingredient(ingredients) |> sum_ingredients)</span>
+<span class="fragment" data-fragment-index="7">defp calc_item(<span class="fragment highlight-bg-green-temp" data-fragment-index="7">Drink[content: ingrts], qty</span>)
+  <span class="fragment highlight-bg-green-temp" data-fragment-index="8">qty * (std_per_ingrt(ingrts) |> sum_ingrts)</span>
 end</span>
 
-<span class="fragment" data-fragment-index="9">defp standard_per_ingredient(ingredients) do
-  lc {Liquid[alcohol_pc: pc], ml} inlist ingredients, do: <span class="fragment highlight-bg-green-temp" data-fragment-index="9">calc_standard_drinks(ml, pc)</span>
+<span class="fragment" data-fragment-index="9">defp std_per_ingrt(ingrts) do
+  lc {Liquid[alcohol_pc: pc], ml} inlist ingrts, do: <span class="fragment highlight-bg-green-temp" data-fragment-index="9">calc_std(ml, pc)</span>
 end
 
-defp calc_standard_drinks(volume_ml, alcohol_pc), do: volume_ml / 1000 * alcohol_pc * 0.789</span>
+defp calc_std(vol_ml, alc_pc), do: vol_ml / 1000 * alc_pc * 0.789</span>
 
-<span class="fragment" data-fragment-index="10">defp sum_ingredients(ingredients), do: <span class="fragment highlight-bg-green-temp" data-fragment-index="10">do_sum_ingredients(ingredients, 0)</span>
-defp do_sum_ingredients(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[], acc</span>), do: acc
-defp do_sum_ingredients(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[ head | tail ], acc</span>), do: head + do_sum_ingredients(tail, acc)</span>
+<span class="fragment" data-fragment-index="10">defp sum_ingrts(ingrts), do: <span class="fragment highlight-bg-green-temp" data-fragment-index="10">do_sum_ingrts(ingrts, 0)</span>
+defp do_sum_ingrts(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[], acc</span>), do: acc
+defp do_sum_ingrts(<span class="fragment highlight-bg-green-temp" data-fragment-index="11">[ h | t ], acc</span>), do: h + do_sum_ingrts(t, acc)</span>
 </code></pre>
                                     </section>
                                     <section>
@@ -346,7 +346,7 @@ beer = Drink.new(name: "Schooner of Beer", content: [{middy, 425}])
 margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, 
  {triple_sec, 15}, {lime_juice, 15}])
 
-<span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
+<span class="fragment highlight-bg-green">Barcalc.Convert.standard_drinks([{wine,1}, {beer,2}, {margarita,1}])</span>
 # 5.014095
                                         </code></pre>
                                     </section>
@@ -379,14 +379,14 @@ total_cost.(3.95, 4)
     <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.map</span>(drinks, &calc_for_item/1) |> <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.reduce</span>(0, &(&1 + &2))
   end
   
-  defp calc_for_item({Drink[content: ingredients], quantity}) do
-    <span class="fragment highlight-bg-green-temp" data-fragment-index="2">quantity * sum_drink(ingredients)</span>
+  defp calc_for_item({Drink[content: ingrts], quantity}) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="2">quantity * sum_drink(ingrts)</span>
   end
 
-  defp sum_drink(ingredients) do
-    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.reduce</span>(ingredients, 0, <span class="fragment highlight-bg-green-temp" data-fragment-index="3">fn {Liquid[alcohol_pc: pc], ml}, acc ->
-      calc_standard_drinks(ml, pc) + acc
-    end</span>)
+  defp sum_drink(ingrts) do
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Enum.reduce</span>(ingrts, 0, <span class="fragment highlight-bg-green-temp" data-fragment-index="3">fn {Liquid[alcohol_pc: pc], ml}, acc -></span>
+      <span class="fragment highlight-bg-green-temp" data-fragment-index="3">calc_standard_drinks(ml, pc) + acc</span>
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="3">end</span>)
   end
 
   defp calc_standard_drinks(volume_ml, alcohol_pc) do
@@ -394,7 +394,7 @@ total_cost.(3.95, 4)
   end
 end
 
-<span class="fragment highlight-bg-green-temp" data-fragment-index="4">Barcalc.Convert.standard_drinks([{wine, 1}, {beer, 2}, {margarita, 1}])</span>
+<span class="fragment highlight-bg-green-temp" data-fragment-index="4">Barcalc.Convert.standard_drinks([{wine,1}, {beer,2}, {margarita,1}])</span>
 # 5.014095</span>
                                         </code></pre>
                                     </section>
@@ -427,15 +427,15 @@ end
                                      <section>
                                         <pre><code data-noescape class="ruby">defmodule Barcalc.Convert do
   def standard_drinks(drinks) do
-    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.map</span>(drinks, &calc_for_item/1) |> <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.scan</span>(0, &(&1 + &2))
+    <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.map</span>(drinks, &calc_for_item/1) |> <span class="fragment highlight-bg-green-temp" data-fragment-index="1">Stream.scan</span>(0, &(&1+&2))
   end
 
-  defp calc_for_item({Drink[content: ingredients], quantity}) do
-    quantity * sum_drink(ingredients)
+  defp calc_for_item({Drink[content: ingrts], quantity}) do
+    quantity * sum_drink(ingrts)
   end
 
-  defp sum_drink(ingredients) do
-    Enum.reduce(ingredients, 0, fn {Liquid[alcohol_pc: pc], ml}, acc ->
+  defp sum_drink(ingrts) do
+    Enum.reduce(ingrts, 0, fn {Liquid[alcohol_pc: pc], ml}, acc ->
       calc_standard_drinks(ml, pc) + acc
     end)
   end
@@ -477,11 +477,11 @@ end
                                     <section>
                                         <h2>Concurrency in Elixir</h2>
                                         <ul>
-                                            <li>Actor-based concurrency model: lightweight, share-nothing processes using inter-process messages to synchronise activities</li>
+                                            <li>Actor-based concurrency: lightweight, share-nothing processes using inter-process messages to synchronise activities</li>
                                             <li class="fragment">Processes run across all CPUs with very little overhead</li>
-<pre class="fragment" style="width: 103%;"><code data-noescape class="ruby">iex> receiver = spawn fn -> receive do {pid, msg} -> IO.puts msg end end
+<pre class="fragment"><code data-noescape class="ruby">iex> rec = spawn fn -> receive do {pid,msg} -> IO.puts msg end end
 #PID<0.43.0>
-iex> spawn fn -> (receiver <- { self, "Oh, hai!" }) end
+iex> spawn fn -> (rec <- {self, "Oh, hai!"}) end
 #PID<0.45.0>
 Oh, hai!</code></pre>
                                             <li class="fragment">Mix adds example OTP config to new projects by default</li>
@@ -517,7 +517,7 @@ Oh, hai!</code></pre>
                                     <section>
                                         <h2>Elixir Macros</h2>
                                         <ul>
-                                            <li>Elixir is a homoiconic language: code can be represented using its own data structures; those representations can be manipulated with macros</li>
+                                            <li>Elixir is a homoiconic language - code can be represented using its own data structures; those representations can be manipulated with macros</li>
                                             <li class="fragment">Macros are defined inside a module with 'defmacro'; parameters passed to macros are not evaluated</li>
                                             <li class="fragment">The quote function takes a block of code and returns its internal representation</li>
                                             <li class="fragment">The unquote function is used within quote blocks to inject a code fragment</li>
