@@ -247,7 +247,7 @@ IO.inspect b # "w"
 IO.inspect b # "wine"</span>
 <span class="fragment">[a,^b,c] = list
 <span style="background-color: #CC0000;">**(MatchError) no match of right hand side value: ["b","w","s"]</span></span></code></pre>
-                                            <li class="fragment">Pattern matching is recursive</li>
+                                            <li class="fragment">Elixir will match patterns inside patterns</li>
                                             <li class="fragment">Guard clauses add predicates that allow you to match based on argument content, </br>eg. when is_number(num_drinks) and num_drinks > 0</li>
                                             <li class="fragment">Only a subset of expressions are permitted in guards</li>
                                         </ul>                                        
@@ -295,17 +295,16 @@ end</span>
                                     <section>
                                         <ul>
                                             <li>Lists are processed recursively; there are no loops</li>
-                                            <li>The vertical bar is a list constructor (cons):</li>
+                                            <li>The vertical bar is a list constructor (cons); lists can be pattern matched using this structure:</li>
 <pre><code class="ruby">list = ["wine" | ["beer", "spirits"]]
 # ["wine", "beer", "spirits"]
 double_head_list = ["wine", "beer" | ["spirits"]]
 # ["wine", "beer", "spirits"]
 </code></pre>
-                                            <li>Lists can be pattern matched using this structure</li>
-                                            <li>Elixir also has list comprehensions:</li>
+                                            <div class="fragment"><li>Elixir also has list comprehensions:</li>
 <pre><code class="ruby">lc x inlist [1, 2], y inlist [10, 20], x*y < 30, do: x*y
 # [10, 20, 20]
-</code></pre>
+</code></pre></div>
                                         </ul>                                        
                                     </section>
                                     <section>
