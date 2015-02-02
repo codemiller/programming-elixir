@@ -1,0 +1,82 @@
+Script started on Thu 02 Jan 2014 10:17:13 PM EST
+]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[?1034h[1;35m[codemiller@cirrus ~/demo]$[0m ls -a
+[0m[38;5;27m.[0m [38;5;27m..[0m convert.ex hof.ex .iex
+]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m vi hof.ex 
+[?1049h[?1h=[2;1H▽[6n[1;1H [1;1H[1;31r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[31;1H"hof.ex" 18L, 439C[>c[1;1Hdefmodule HOF do
+ def pmap(collection, func) do
+ collection |> spawn_processes(func) |> collect_results
+ end
+
+ defp spawn_processes(collection, func) do
+ this_pid = self
+ Enum.map(collection, fn (item) ->[9;7Hspawn_link fn -> (this_pid <- { self, func.(item) }) end
+ end)
+ end
+
+ defp collect_results(pid_list) do
+ Enum.map(pid_list, fn (pid) ->[15;7Hreceive do { ^pid, result } -> result end
+ end)
+ end
+end
+[94m~ [20;1H~ [21;1H~ [22;1H~ [23;1H~ [24;1H~ [25;1H~ [26;1H~ [27;1H~ [28;1H~ [29;1H~ [30;1H~ [m[31;51H1,1[11CAll[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;51H2[2;1H[?12l[?25h[?25l[31;51H3[3;1H[?12l[?25h[?25l[31;53H5[3;5H[?12l[?25h[?25l[31;53H16[3;16H[?12l[?25h[?25l[31;54H9[3;19H[?12l[?25h[?25l[15C[106m([mfunc[106m)[m[31;53H34[3;34H[?12l[?25h[?25l(func)[31;54H5[3;35H[?12l[?25h[?25l[106m([mfunc[106m)[m[31;54H9[3;39H[?12l[?25h[?25l(func)[31;53H41[3;41H[?12l[?25h[?25l[31;54H4[3;44H[?12l[?25h[?25l[31;51H4,3 [4;3H[?12l[?25h[?25l[31;51H5[5;3H[?12l[?25h[?25l[31;51H6[6;3H[?12l[?25h[?25l[31;51H7[7;3H[?12l[?25h[?25l[31;51H8[8;3H[?12l[?25h[?25l[31;51H9[9;3H[?12l[?25h[?25l[31;51H10,3[10;3H[?12l[?25h[?25l[31;52H1[11;3H[?12l[?25h[?25l[31;52H2,0-1[12;1H[?12l[?25h[?25l[31;52H3,3 [13;3H[?12l[?25h[?25l[31;52H4[14;3H[?12l[?25h[?25l[31;52H5[15;3H[?12l[?25h[?25l[31;1H[K[31;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[31;1H[K[31;1H[?1l>[?12l[?25h[?1049l]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m vi convert.ex 
+[?1049h[?1h=[2;1H▽[6n[1;1H [1;1H[1;31r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[31;1H"convert.ex" 20L, 518C[>c[1;1Hdefmodule Convert do
+ def standard_drinks(drinks) do
+ Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[4;3Hend
+
+ defp calc_for_item({Drink[content: ingredients], quantity}) do
+ quantity * sum_drink(ingredients)
+ end
+
+ defp sum_drink(ingredients) do
+ Enum.reduce(ingredients, 0, fn {Liquid[alcohol_pc: pc], ml},[12;6Hacc ->[13;7Hcalc_standard_drinks(ml, pc) + acc
+ end)
+ end
+
+ defp calc_standard_drinks(volume_ml, alcohol_pc) do
+ volume_ml / 1000 * alcohol_pc * 0.789
+ end
+end
+[94m~ [22;1H~ [23;1H~ [24;1H~ [25;1H~ [26;1H~ [27;1H~ [28;1H~ [29;1H~ [30;1H~ [m[31;51H1,1[11CAll[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;51H2[2;1H[?12l[?25h[?25l[31;1H[1m-- VISUAL --[m[31;14H[K[31;51H2,1[11CAll[2;1H[?12l[?25h[?25l[47m def standard_drinks(drinks) do [m[31;51H3[3;1H[?12l[?25h[?25l[47m Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[m[31;51H4[4;1H[?12l[?25h[?25l[47m end [m[31;51H5,0-1[5;1H[?12l[?25h[?25l[2;1H def standard_drinks(drinks) do[2;33H[K[3;1H Enum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[4;1H end[4;6H[K[31;1H[K[31;51H2,1[11CAll5 lines yanked[31;51H[K[31;51H2,1[11CAll[2;1H[?12l[?25h[?25l[31;1H4 more lines[31;13H[K[3;30r[3;1H[4L[1;31r[3;5HEnum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[4;3Hend
+
+ def standard_drinks(drinks) do[31;1H[K[31;51H2,1[11CAll4 more lines[31;51H[K[31;51H2,1[11CAll[2;1H[?12l[?25h[?25l[31;51H3[3;1H[?12l[?25h[?25l[31;51H4[4;1H[?12l[?25h[?25l[31;51H5,0-1[5;1H[?12l[?25h[?25l[31;51H6,1 [6;1H[?12l[?25h[?25l[31;53H3[6;3H[?12l[?25h[?25l[31;53H7[6;7H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;51H[K[31;51H6,7[11CAll[6;7H[?12l[?25h[?25lpstandard_drinks(drinks) do[31;53H8[6;8H[?12l[?25h[31;1H[K[6;7H[?25l[31;51H6,7[11CAll[6;7H[?12l[?25h[?25l[31;51H7[7;7H[?12l[?25h[?25l[31;53H6[7;6H[?12l[?25h[?25l[31;53H5[7;5H[?12l[?25h[?25lnum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2)[7;68H[K[7;5H[?12l[?25h[?25lum.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2)[7;67H[K[7;5H[?12l[?25h[?25lm.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2)[7;66H[K[7;5H[?12l[?25h[?25l.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2)[7;65H[K[7;5H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;51H[K[31;51H7,5[11CAll[7;5H[?12l[?25h[?25lH.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[31;53H6[7;6H[?12l[?25h[?25lO.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[31;53H7[7;7H[?12l[?25h[?25lF.map(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[31;53H8[7;8H[?12l[?25h[31;1H[K[7;7H[?25l[31;51H7,7[11CAll[7;7H[?12l[?25h[?25l[31;53H8[7;8H[?12l[?25h[?25l[31;53H9[7;9H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;51H[K[31;51H7,9[11CAll[7;9H[?12l[?25h[?25lpmap(drinks, &calc_for_item/1) |> Enum.reduce(0, &(&1 + &2))[31;53H10[7;10H[?12l[?25h[31;1H[K[7;9H[?25l[31;51H7,9[11CAll[7;9H[?12l[?25h[?25l[31;51H24,1[24;1H[?12l[?25h[?25l[31;52H3[23;1H[?12l[?25h[?25l[31;52H2[22;1H[?12l[?25h[?25l[31;52H1[21;1H[?12l[?25h[?25l[31;1H[1m-- INSERT --[m[31;51H[K[31;51H21,54[9CAll[21;54H[?12l[?25h[?25l[22;30r[22;1H[L[1;31r[31;51H[K[31;51H22,1[10CAll[22;1H[?12l[?25h[?25l[31;54H2[22;2H[?12l[?25h[?25l[31;54H3[22;3H[?12l[?25h[?25l[31;54H4[22;4H[?12l[?25h[?25l[31;54H5[22;5H[?12l[?25h[?25l:[31;54H6[22;6H[?12l[?25h[?25lt[31;54H7[22;7H[?12l[?25h[?25li[31;54H8[22;8H[?12l[?25h[?25lm[31;54H9[22;9H[?12l[?25h[?25ler[31;54H11[22;11H[?12l[?25h[?25l.[31;55H2[22;12H[?12l[?25h[?25ls[31;55H3[22;13H[?12l[?25h[?25ll[31;55H4[22;14H[?12l[?25h[?25le[31;55H5[22;15H[?12l[?25h[?25le[31;55H6[22;16H[?12l[?25h[?25lp[31;55H7[22;17H[?12l[?25h[?25l([31;51H[K[31;51H22,18[9CAll[22;18H[?12l[?25h[?25l2[31;55H9[22;19H[?12l[?25h[?25l0[31;54H20[22;20H[?12l[?25h[?25l0[31;55H1[22;21H[?12l[?25h[?25l[106m([m200[106m)[m[31;51H[K[31;51H22,22[9CAll[22;22H[?12l[?25h[31;1H[K[22;21H[?25l[31;51H22,21[9CAll[22;21H[?12l[?25h[?25l[31;51H[K[31;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"convert.ex" 25L, 650C written
+[?1l>[?12l[?25h[?1049l]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m vi .iex 
+[?1049h[?1h=[2;1H▽[6n[1;1H [1;1H[1;31r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[31;1H".iex" 8L, 363C[>c[1;1Hdefrecord Liquid, name: :nil, alcohol_pc: 0
+defrecord Drink, name: :nil, content: [{Liquid.new, 0}]
+
+tequila = Liquid.new(name: "Tequila", alcohol_pc: 38)
+triple_sec = Liquid.new(name: "Triple Sec", alcohol_pc: 40)
+lime_juice = Liquid.new(name: "Lime Juice")
+margarita = Drink.new(name: "Margarita", content: [{tequila, 30}, {tt[8;1Hriple_sec, 15}, {lime_juice, 15}])
+
+[94m~ [11;1H~ [12;1H~ [13;1H~ [14;1H~ [15;1H~ [16;1H~ [17;1H~ [18;1H~ [19;1H~ [20;1H~ [21;1H~ [22;1H~ [23;1H~ [24;1H~ [25;1H~ [26;1H~ [27;1H~ [28;1H~ [29;1H~ [30;1H~ [m[31;51H1,1[11CAll[1;1H[?12l[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[31;1H[K[31;1H:[?12l[?25h...[?25l:![31;3H[K[31;3Hq[?12l[?25h[?25l[31;3H[K[31;3H[?12l[?25h[?25l[31;2H[K[31;2H[?12l[?25hq[?25l[?12l[?25h[?25l[31;1H[K[31;1H[?1l>[?12l[?25h[?1049l]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m iex
+Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+Interactive Elixir (0.12.0) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> margarita
+[33mDrink[name: "Margarita",
+ content: [{Liquid[name: "Tequila", alcohol_pc: 38], 30},
+ {Liquid[name: "Triple Sec", alcohol_pc: 40], 15},
+ {Liquid[name: "Lime Juice", alcohol_pc: 0], 15}]][0m
+iex(2)> c "hof.ex"
+[33m[HOF][0m
+iex(3)> c "convert.ex"
+[33m[Convert][0m
+iex(4)> import Convert
+[33mnil[0m
+iex(5)> clear
+[H[2Jiex(6)> :timer.tc fn ->
+...(6)> standard_drinks Enum.take(Stream.cycle(
+...(6)> [marg    {margarita, 1}[C[C[C[C[C[C[C[C[C[C[C[C[C[C][C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C)[C, 3)[C
+...(6)> end
+[33m{1811457, 4.11858}[0m
+iex(7)>  iex(7)> end iex(7)> [{margarita, 1}]), 3) iex(7)> standard_drinks Enum.take(Stream.cycle( iex(7)> :timer.tc fn ->
+...(7)>  ...(7)> :timer.tc fn -> ...(7)> end ...(7)> [{margarita, 1}]), 3) ...(7)> standard_drinks Enum.take(Stream.cycle([Cpstandard_drinks Enum.take(Stream.cycle([C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+...(7)>  ...(7)> pstandard_drinks Enum.take(Stream.cycle( ...(7)> :timer.tc fn -> ...(7)> end ...(7)> [{margarita, 1}]), 3)
+...(7)>  ...(7)> [{margarita, 1}]), 3) ...(7)> pstandard_drinks Enum.take(Stream.cycle( ...(7)> :timer.tc fn -> ...(7)> end
+[33m{602935, 4.11858}[0m
+iex(8)> 
+BREAK: (a)bort (c)ontinue (p)roc info (i)nfo (l)oaded
+ (v)ersion (k)ill (D)b-tables (d)istribution
+^C]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m
+
+

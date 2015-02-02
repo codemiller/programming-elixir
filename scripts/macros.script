@@ -1,0 +1,49 @@
+Script started on Thu 02 Jan 2014 06:54:26 PM EST
+]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[?1034h[1;35m[codemiller@cirrus ~/demo]$[0m iex
+Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+Interactive Elixir (0.12.0) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> defmodule Typos do
+...(1)> defmacro fi(cond, clauses)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C do
+...(1)> quote do: if()[C[Cu)n)q)u)o)t)e)()c)o)n)d)))[C[C[C[C[C[C,) )u)n)q)u)o)t)e)()c)l)a)u)s)e)s)))[C[C[C[C[C[C[C[C[C[C
+...(1)> end
+...(1)> 
+...(1)> defmacro if_inspect(cond, clauses)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C do
+...(1)> IO.inspect cond
+...(1)> IO.inspect clauses
+...(1)>  ...(1)> IO.inspect clauses ...(1)> IO.inspect cond ...(1)> defmacro if_inspect(cond, clauses) do ...(1)> end ...(1)> quote do: if(unquote(cond), unquote(clauses))
+...(1)> end
+...(1)> end
+[33m{:module, Typos,
+ <<70, 79, 82, 49, 0, 0, 8, 200, 66, 69, 65, 77, 65, 116, 111, 109, 0, 0, 0, 147, 0, 0, 0, 15, 12, 69, 108, 105, 120, 105, 114, 46, 84, 121, 112, 111, 115, 8, 95, 95, 105, 110, 102, 111, 95, 95, 4, 100, 111, 99, ...>>,
+ {:if_inspect, 2}}[0m
+iex(2)> clear
+[H[2Jiex(3)> Typos.fi 2 > 1, do: IO.puts "Winning!"
+[31m** (CompileError) iex:3: you must require Typos before invoking the macro Typos.fi/2[0m
+[31m src/elixir_dispatch.erl:196: :elixir_dispatch.expand_macro_fun/7
+ src/elixir_dispatch.erl:184: :elixir_dispatch.expand_require/6
+ src/elixir_dispatch.erl:123: :elixir_dispatch.dispatch_require/6
+ lists.erl:1339: :lists.mapfoldl/3
+ src/elixir.erl:136: :elixir.eval_forms/3
+[0m
+iex(3)> require Typos
+[33mnil[0m
+iex(4)> import typ   Typos
+[33mnil[0m
+iex(5)> clear
+[H[2Jiex(6)>  iex(6)> clear iex(6)> import Typos iex(6)> require Typos iex(6)> Typos.fi 2 > 1, do: IO.puts "Winning!"[C[C[C[C[C[Cfi 2 > 1, do: IO.puts "Winning!" fi 2 > 1, do: IO.puts "Winning!" fi 2 > 1, do: IO.puts "Winning!" fi 2 > 1, do: IO.puts "Winning!" fi 2 > 1, do: IO.puts "Winning!" fi 2 > 1, do: IO.puts "Winning!" [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Winning!
+[33m:ok[0m
+iex(7)>  iex(7)> fi 2 > 1, do: IO.puts "Winning!"[Ci 2 > 1, do: IO.puts "Winning!" [Cf 2 > 1, do: IO.puts "Winning!"_ 2 > 1, do: IO.puts "Winning!"i 2 > 1, do: IO.puts "Winning!"n 2 > 1, do: IO.puts "Winning!"s 2 > 1, do: IO.puts "Winning!"p 2 > 1, do: IO.puts "Winning!"e 2 > 1, do: IO.puts "Winning!"c 2 > 1, do: IO.puts "Winning!"t 2 > 1, do: IO.puts "Winning!"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+{:>, [line: 7], [2, 1]}
+[do: {{:., [line: 7],
+ [{:__aliases__, [counter: 0, line: 7], [:IO]}, :puts]}, [line: 7],
+ ["Winning!"]}]
+Winning!
+[33m:ok[0m
+iex(8)> 
+BREAK: (a)bort (c)ontinue (p)roc info (i)nfo (l)oaded
+ (v)ersion (k)ill (D)b-tables (d)istribution
+^C]0;codemiller@cirrus:~/demo]7;file://cirrus/home/codemiller/demo[1;35m[codemiller@cirrus ~/demo]$[0m
+
+
